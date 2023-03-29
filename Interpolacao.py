@@ -1,9 +1,16 @@
-#Interpolação E Cálculo de Título
+#Calculadora Geral p/ Termodinâmica
 #Emmanuel Sousa Lodron
 
 import streamlit as st
 import time
+from PIL import Image
+import numpy as np
 
+
+imagem1 = Image.open('D:\Programação\Calculadora Geral para Termodinamica\Screenshot_1.png')
+imagem2 = Image.open('D:\Programação\Calculadora Geral para Termodinamica\Screenshot_2.png')
+imagem3 = Image.open('D:\Programação\Calculadora Geral para Termodinamica\Screenshot_3.png')
+imagem4 = Image.open('D:\Programação\Calculadora Geral para Termodinamica\Screenshot_4.png')
 
 def interpolacao(valor_possuido,valor_anterior1,valor_posterior1,valor_anterior2,valor_posterior2):
     valor_interpolado = (((valor_possuido-valor_anterior1)/(valor_posterior1-valor_anterior1))*(valor_posterior2-valor_anterior2))+valor_anterior2
@@ -23,10 +30,19 @@ def calc_calor(U1,U2,m,W):
 
 st.title('Calculadora Geral para Termodinamica')
 st.sidebar.title('Programas')
-programa_selecionado = st.sidebar.selectbox('Qual programa você quer utilizar?', ['Menu','Interpolador','Calculadora de Título','Calculadora de Propriedades Específicas','Quantidade de Calor'])
+programa_selecionado = st.sidebar.selectbox('Qual programa você quer utilizar?', ['Menu','Tabelas','Interpolador','Calculadora de Título','Calculadora de Propriedades Específicas','Quantidade de Calor'])
 
 if programa_selecionado == 'Menu':
    st.image(image = 'https://www.coladaweb.com/wp-content/uploads/2014/12/termodinamica2.jpg')
+
+elif programa_selecionado == 'Tabelas':
+    with st.expander("Tabela: Água Saturada em função da temperatura"):
+        st.image(image = imagem1, use_column_width = 'always')
+        st.image(image = imagem2, use_column_width = 'always')
+    with st.expander("Tabela: Água Saturada em função da pressão"):
+        st.image(image = imagem3, use_column_width = 'always')
+        st.image(image = imagem4, use_column_width = 'always')    
+
 
 elif programa_selecionado == 'Interpolador':
     try:
